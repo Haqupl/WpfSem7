@@ -1,0 +1,40 @@
+﻿<Window x:Class="wpfSyntezator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="293.421" Width="507.895">
+    <Grid>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="405,36,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <TextBlock x:Name="txtInput" HorizontalAlignment="Left" Height="23"
+                 Margin="10,33,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="358"/>
+        <GroupBox Header="Serwer" HorizontalAlignment="Stretch" Margin="0,75,0,0" VerticalAlignment="Top" Height="187">
+            <Grid>
+                <Button x:Name="BtnRun" Content="Uruchom" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="75" Click="BtnRun_Click"/>
+                <Button IsEnabled="False" x:Name="BtnStop" Content="Zatrzymaj" HorizontalAlignment="Left" Margin="93,10,0,0" VerticalAlignment="Top" Width="75" Click="BtnStop_Click"/>
+                <ListView Name="lvWiadomosc" HorizontalAlignment="Stretch" Height="121" Margin="0,44,0,0" VerticalAlignment="Top">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsReaded}" Value="True">
+                                    <Setter Property="Background" Value="LightGreen"/>
+                                </DataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding IsReaded}" Value="True"/>
+                                        <Condition Binding="{Binding ExistIp}" Value="True"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="Background" Value="RosyBrown"/>
+                                </MultiDataTrigger>                                
+                            </Style.Triggers>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding sData}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</Window>

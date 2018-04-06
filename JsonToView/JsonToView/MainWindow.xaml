@@ -1,0 +1,43 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:JsonToView" x:Class="JsonToView.MainWindow"
+        Title="MainWindow" Height="350" Width="525" Loaded="Window_Loaded">
+    <Grid Background="#FF0DB246">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="39"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="Cryptopwaluty $$$..." HorizontalAlignment="Center" VerticalAlignment="Center"
+			FontSize="20" FontFamily="Calibry" FontWeight="Bold" Foreground="#FFB20600"/>
+
+        <Grid Grid.Row="1">
+            <Label Content="Szukaj:" FontSize="16" VerticalAlignment="Top"/>
+            <TextBox Margin="70 0 70 0" x:Name="txtSzukaj" VerticalContentAlignment="Center" FontSize="15"/>
+            <Button HorizontalAlignment="Right" Content="Szukaj" Width="60" Click="Button_Click"/>
+        </Grid>
+
+        <ProgressBar x:Name="pbWait" Grid.Row="2" Panel.ZIndex="99" Width="300" Height="30" IsIndeterminate="True"/>
+        <ListView x:Name="lvData" Grid.Row="2" HorizontalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Red" BorderThickness="1" Padding="2" Width="100">
+                        <StackPanel HorizontalAlignment="Center">
+                            <TextBlock Text="{Binding Name}"/>
+                            <TextBlock Text="{Binding Symbol}"/>
+                            <TextBlock Text="{Binding Algorithm}"/>
+                            <TextBlock Text="{Binding Status}"/>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Window>
