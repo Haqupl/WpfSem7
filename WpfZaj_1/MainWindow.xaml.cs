@@ -27,7 +27,7 @@ namespace WpfZaj_1
             InitializeComponent();
             listaOsob = new List<Osoba>()
             {
-                new Osoba("Jan","Kowalski",45),
+                new Osoba("Jan111","Kowalski",45),
                 new Osoba("Mirex","Mik",34)
             };
 
